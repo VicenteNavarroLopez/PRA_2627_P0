@@ -1,16 +1,14 @@
-all: RoboticArm.h RoboticArm.cpp
+all: Robot
 
+RobotArm.o: RobotArm.cpp RobotArm.h
+	g++ -c RobotArm.cpp
+Robot.o: Robot.cpp RobotArm.h
+	g++ -c Robot.cpp
+Robot: Robot.o RobotArm.o
+	g++ -o Robot Robot.o RobotArm.o
 
-RoboticArm.h.o:RoboticArm.cpp RoboticArm.h
-	g++ -c RoboticArm.h
-
-RoboticArm.cpp.o:RoboticArm.cpp RoboticArm.h
-       g++ -c RoboticArm.cpp	
+clean: 
+	rm -f *.o Robot
 
 test: all
-	./RoboticArm.h
-	./RoboticArm.cpp
-
-
-clean:
-	rm -f *.o RoboticArm.h RoboticArm.cpp
+	./Robot
