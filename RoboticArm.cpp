@@ -1,55 +1,51 @@
-#include <iostream>
-#include "RoboticArm.h"
+include <iostream>
+include "RoboticArm.h"
 
+class RoboticArm {
 
-RoboticArm:RoboticArm(double x, double y, double z)
-	: x(x),y(y),z(z);
+	private:
 
-holdingObject(false){
+		double x;
+		double y;
+		double z;
+		bool isHolding;
+	
+	public:
 
-}
+		RoboticArm(double X, double  Y, double  Z, bool Hold) {
+			x = X;
+			y = Y;
+			z = Z;
+			isHolding = Hold;
+		}
 
-double RoboticArm::getX(){
-	return x;
-}
+		double GetX() { return x; }
+		double GetY() { return y; }
+		double getZ() { return z; }
+		bool Holding() { return isHolding; }
 
-double RoboticArm::getY(){
-	return y;
-}
+		void grab () {
+			
+			if (Holding()) std::cout << "No se puede sujetar el objeto: Ya estás sujetando uno!" << std::endl;
+			else {
+				isHolding = true;
+				std::cout << "Se ha cojido el objeto." << std::endl;
+			}
+		}
 
-double RoboticArm::getZ(){
-	return z;
-}
+		void release () {
+			
+			if (!Holding()) std::cout << "No se puede soltar el objeto: No tienes ningun objeto!" << std::endl;
+			else {
+				isHolding = false;
+				std::cout << "Se ha soltado el objeto." << std::endl;
+			}
+		}
 
-bool RoboticArm::holdingObject(){
-	return holdingObject;
- }
-
-void RoboticArm::grab(){
-	holdingObject = true ;
-}
-
-void RoboticArm::release(){
-	holdingObject = false;
-}
-
-void RoboticArm:: move(double x, double y, double z){
-	this->x = x;
-	this->y = y;
-	this->z = z;
-}
-
-int main(){
-
-	RoboticArm robot;
-
-	std::cout << ("Posicion Inicial":  << robot.getX() << robot.getY() << robotgetZ()); <<std::endl;
-
-	robot.move(10.0, 20.0, 30.0);
-
-	std::cout << ("Posicion Actual": <<robotgetX() << robot.getY() << robotgetZ()); <<std::endl;
-
-	robot.release;
-
-	return 0;
-}
+		void move(double X, double Y, double Z){
+			
+			x = X;
+			y = Y;
+			z = Z;		
+		}
+};
