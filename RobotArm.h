@@ -1,5 +1,5 @@
-#ifndef ROBOTARM.H
-#define ROBOTARM.H
+#ifndef ROBOTARM_H
+#define ROBOTARM_H
 
 #include <iostream>
 
